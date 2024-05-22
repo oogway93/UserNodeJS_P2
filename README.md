@@ -10,5 +10,5 @@ DB_PASS="password"
 
 2) ## Для запуска программы нужна лишь одна команда.
 ```
-node ./main.js
+ node --env-file=.env main.js
 ```
