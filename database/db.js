@@ -1,12 +1,11 @@
 import postgres from 'postgres'
-
 const sql = postgres({
     'postgres://username:password@host:port/database': {
-        host: 'localhost',
-        port: 5432,
-        database: 'postgres',
-        username: 'postgres',
-        password: 'postgres',
+        host: process.env.DB_LOCALHOST,
+        port: process.env.DB_PORT,
+        database: process.env.DB_NAME,
+        username: process.env.DB_USER,
+        password: process.env.DB_PASS,
     }
 })
 
