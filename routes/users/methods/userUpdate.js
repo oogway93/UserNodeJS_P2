@@ -1,19 +1,20 @@
 const data = require("../data")
+const usersSQL = require("../../../database/usersSQL")
 
 module.exports = (req, res, path) => {
     let body = ""
     req.on("data", chunk => {
         body += chunk
     })
-    req.on("end", () => {
+    req.on("end", async function () {
         try {
             const userId = parseInt(path.split("/")[3], 10)
             const parsedBody = JSON.parse(body)
             const name = parsedBody.name
-            const password = parsedBody.password
-            if (userId && name && password) {
-                console.log("Updated user" + JSON.stringify({ id: userId, name: name, password: password }))
-                let result = data.updateUser(userId, { name: name, password: password })
+            const age = parsedBody.age
+            if (userId && name && age) {
+                console.log("Updated user" + JSON.stringify({ id: userId, name: name, password: age }))
+                let result = await usersSQL.updateUser(userId, name, age)
                 res.writeHead(200, { "Content-Type": "application/json" })
                 res.end(JSON.stringify({ status: "UPDATED", data: result }))
             }

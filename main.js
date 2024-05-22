@@ -2,7 +2,7 @@ const http = require('node:http');
 const routeHandler = require("./routes/router.js");
 
 
-const port = 3001;
+const port = 3000;
 
 const server = http.createServer(routeHandler);
 
