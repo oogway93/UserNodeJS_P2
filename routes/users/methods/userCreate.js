@@ -1,4 +1,3 @@
-const data = require("../data")
 const usersSQL = require("../../../database/usersSQL")
 
 module.exports = async function(req, res) {
